@@ -1,8 +1,8 @@
 package base;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseFunctions extends BaseTest{
     //metodlar
@@ -13,20 +13,20 @@ public class BaseFunctions extends BaseTest{
 
 
 
-    public void waitmethod() throws InterruptedException {
+    public void waitMetod(int value) throws InterruptedException {
 
-        Thread.sleep(10000);
+        Thread.sleep(value);
 
     }
 
-    public void sendKeys(By locator, int text) {
-        driver.findElement(locator).sendKeys();
+    public void sendKeys(By locator, String text) {
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(text);
     }
 
 
-    public void reset(By by){  //sıfırla
-        driver.findElement(by).clear();
+    protected String getText(By locator) {
+        return driver.findElement(locator).getText();
     }
-
 
 }
